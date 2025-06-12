@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Redirecting...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <p>Redirecting you to the right app store...</p>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const data = params.get("data");
+
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+
+    if (/android/i.test(ua)) {
+      window.location.href = `https://play.google.com/store/apps/details?id=com.androidwebview.jiyyo&referrer=${encodeURIComponent(data)}`;
+    } else if (/iPad|iPhone|iPod/.test(ua)) {
+      window.location.href = `https://apps.apple.com/app/idYOUR_APP_ID`; // Replace with your real iOS App Store ID
+    } else {
+      document.body.innerHTML = "Please open this link on a mobile device.";
+    }
+  </script>
+</body>
+</html>
